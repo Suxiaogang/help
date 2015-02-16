@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>Linux/Git Bash Guide</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--360 webkit-->
+<meta name="renderer" content="webkit">
+<!--Baidu no-transform-->
+<meta http-equiv="Cache-Control" content="no-transform " />
+<!--No user-scalable-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<style>
+a{
+	color:#AFAFAF;
+}
+a:hover {
+	text-decoration: none;
+	-webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    transition: 0.2s;
+}
+a:focus,a:active{
+	text-decoration: none;
+	outline:0 !important;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+.navbar {
+	border-radius: 0px;
+	border: none;
+}
+blockquote{
+	padding: 10px 10px;
+	font-size: 11px;
+}
+code {
+	font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,sans-serif;
+	background-color: #EEE;
+}
+kbd {
+	padding: .1em .6em;
+	border: 1px solid #CCC;
+	font-size: 11px;
+	font-family: Arial,Helvetica,sans-serif;
+	background-color: #F7F7F7;
+	font-weight:100;
+	color: #333;
+	-moz-box-shadow: 0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+	-webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2),0 0 0 2px #FFF inset;
+	box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2),0 0 0 2px #FFF inset;
+	border-radius: 3px;
+	display: inline-block;
+	margin: 0 .1em;
+	text-shadow: 0 1px 0 #FFF;
+	line-height: 1.4;
+	white-space: nowrap;
+}
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin-bottom: 60px;
+  background-color: #EDEFF0;
+  background-size:cover;
+}
+.breadcrumb{
+	background-color: #fff;
+	border-radius: 5px;
+	padding20px;
+	margin:0;
+}
+.nav{
+	display:block;
+	background-color: #fff;
+	border-radius: 5px;
+	padding:0px 20px 20px 20px;
+	margin:20px 0px 20px 0px;
+	z-index:100;
+}
+.nav li{
+	margin:10px;
+}
+.nav li a{
+	font-size:15px;
+	color:#555;
+	padding:3px 5px 3px 5px;
+	border-radius: 3px;
+	-webkit-transition: all .6s;
+	-moz-transition: all .6s;
+	-o-transition: all .6s;
+	transition: all .6s;
+}
+.nav li a:active{
+	text-decoration: none;
+}
+.nav li a:hover{
+	color:#FFF;
+	background-color:#4096EE;
+}
+.page-header {
+	padding-bottom: 10px;
+	margin: 30px 0;
+}
+h4{
+	font-size:18px;
+}
+h6{
+	margin:20px 0px 20px 0px;
+	font-weight:bold;
+	font-size: 14px;
+	color: #8C8C8C;
+}
+pre, pre.prettyprint {
+	background-color: #2C2C2C;
+	color:#63DE00;
+	background-color: #ECECEC;
+	color:#000;
+	border: none;
+	border-radius: 5px;
+	font-family: Consolas,Courier,Courier New,monospace,serif;
+	font-size: 13px;
+}
+/***footer***/
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 50px;
+  font-size:12px;
+  background-color: #2C3E50;
+}
+.footer p{
+  margin-top:20px;
+  color:#C5C5C5;
+}
+.footer p a{
+  color:#C5C5C5;
+  margin-left:3px;
+  margin-right:3px;
+}
+.footer p a:hover{
+  color:#888;
+}
+.footer .fa-heart{
+  color:red;
+}
+.fa{
+	color:#5C5C5C;
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        Linux/UNIX or UNIX-like Bash Guide for Beginners
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+	<div class="row">
+
+
+		<div class="col-md-12 breadcrumb">
+			<ol class="breadcrumb">
+			  <li><a href="#Bash">Bash</a></li>
+			  <li><a href="#Git">Git/GitHub</a></li>
+			  <li><a href="#Vi">Vi/Vim</a></li>
+			  <li class="active"><a href="#Windows">Windows terminal command</a></li>
+			</ol>
+		</div>
+
+		<!--  ------------------------ UNIX/Linux bash ------------------------ -->
+
+		<div class="col-md-12 nav" id="Bash">
+			<div class="page-header"><h4>UNIX/Linux bash</h4></div>
+			
+			<h6>File & Directory Commands</h6>
+			<pre class="">
+  The tilde (~) symbol stands for your home directory. If you are user, then the tilde (~) stands for /home/user
+
+  #显示当前目录
+  pwd: The pwd command will allow you to know in which directory you're located (pwd stands for "print working directory"). Example: "pwd" in the Desktop directory will show "~/Desktop". Note that the GNOME Terminal also displays this information in the title bar of its window. A useful gnemonic is "present working directory."
+
+  ls: The ls command will show you ('list') the files in your current directory. Used with certain options, you can see sizes of files, when files were made, and permissions of files. Example: "ls ~" will show you the files that are in your home directory.
+
+  cd: The cd command will allow you to change directories. When you open a terminal you will be in your home directory. To move around the file system you will use cd. Examples:
+
+  To navigate into the root directory, use "cd /"
+
+  To navigate to your home directory, use "cd" or "cd ~"
+
+  #切换到上级目录
+  To navigate up one directory level, use "cd .."
+
+  #返回到刚才的目录
+  To navigate to the previous directory (or back), use "cd -"
+
+  To navigate through multiple levels of directory at once, specify the full directory path that you want to go to. For example, use, "cd /var/www" to go directly to the /www subdirectory of /var/. As another example, "cd ~/Desktop" will move you to the Desktop subdirectory inside your home directory.
+
+  cp: The cp command will make a copy of a file for you. Example: "cp file foo" will make an exact copy of "file" and name it "foo", but the file "file" will still be there. If you are copying a directory, you must use "cp -r directory foo" (copy recursively). (To understand what "recursively" means, think of it this way: to copy the directory and all its files and subdirectories and all their files and subdirectories of the subdirectories and all their files, and on and on, "recursively")
+
+  mv: The mv command will move a file to a different location or will rename a file. Examples are as follows: "mv file foo" will rename the file "file" to "foo". "mv foo ~/Desktop" will move the file "foo" to your Desktop directory, but it will not rename it. You must specify a new file name to rename a file.
+
+  To save on typing, you can substitute '~' in place of the home directory.
+	Note that if you are using mv with sudo you can use the ~ shortcut, because the terminal expands the ~ to your home directory. However, when you open a root shell with sudo -i or sudo -s, ~ will refer to the root account's home directory, not your own.
+
+  rm: Use this command to remove or delete a file in your directory.
+
+  rmdir: The rmdir command will delete an empty directory. To delete a directory and all of its contents recursively, use rm -r instead.
+
+  mkdir: The mkdir command will allow you to create directories. Example: "mkdir music" will create a directory called "music".
+
+  man: The man command is used to show you the manual of other commands. Try "man man" to get the man page for man itself. See the "Man & Getting Help" section down the page for more information.</pre>
+			<h6>File & Directory Commands</h6>
+			<pre class="prettyprint">
+  echo # help >> README.md
+  //touch .gitignore
+  git init
+  git add README.md
+  git commit -m "first commit"
+  git remote add origin https://github.com/Suxiaogang/YourRepoName.git
+  git push -u origin master</pre>
+			<h6>push an existing repository from the command line</h6>
+			<pre class="prettyprint">
+  git remote add origin https://github.com/Suxiaogang/YourRepoName.git
+  git push -u origin master</pre>
+		</div>
+
+		<!--  ------------------------ Git/GitHub ------------------------ -->
+
+		<div class="col-md-12 nav" id="Git">
+			<div class="page-header"><h4>Git/GitHub</h4></div>
+
+			<h6>create a new repository on the command line</h6>
+			<pre class="prettyprint">
+  echo # help >> README.md
+  //touch .gitignore
+  git init
+  git add README.md
+  git commit -m "first commit"
+  git remote add origin https://github.com/Suxiaogang/YourRepoName.git
+  git push -u origin master</pre>
+			<h6>push an existing repository from the command line</h6>
+			<pre class="prettyprint">
+  git remote add origin https://github.com/Suxiaogang/YourRepoName.git
+  git push -u origin master</pre>
+			<h6>clone a repository with git clone [url] [directory name]</h6>
+			<pre class="prettyprint">
+  $ git clone https://github.com/Suxiaogang/YourRepoName
+  $ git clone https://github.com/Suxiaogang/YourRepoName MyRepoName</pre>
+		</div>
+
+		<!--  ------------------------ Vi/Vim ------------------------ -->
+
+		<div class="col-md-12 nav" id="Vi">
+			<div class="page-header"><h4>Vi/Vim</h4></div>
+
+			http://www.washington.edu/computing/unix/vi.html
+			http://unixhelp.ed.ac.uk/vi/
+			https://www.ccsf.edu/Pub/Fac/vi.html
+
+			<h6>to load an existing text file into vi, run the command 'vi [filename]', from the shell prompt:</h6>
+			<pre class="prettyprint">
+  $ vi myfile.txt</pre>
+			<h6>Command Mode and Insert Mode:</h6>
+			<blockquote>
+  vi is different from many editors, in that it has two main modes of operation: <b>command mode</b>, and <b>insert mode</b>. This is the cause of much of the confusion when a new user is learning vi, but it is actually very simple to understand.<br><br>
+
+When you first load the editor, you will be placed into <b>command mode</b>. To switch into insert mode, simply press the <kbd>i</kbd> key. Although nothing will change on the screen to indicate the new mode, any thing that you type from now on will appear in the screen - this is what you are used to if you have ever used any other editor, or word processor. Try typing a few lines of text. When you press 'return' or 'enter' a new line will be created, and you may continue typing.<br><br>
+
+When you have finished typing, you may return to <b>command mode</b>. This is done by pressing your <kbd>Esc</kbd> key. In command mode, key presses do not appear on the screen, but instead are used to indicate various commands to vi.<br><br>
+
+At first, you may often mistake command mode and insert mode. For example, you may think you are in insert mode, and start typing your text, when in fact you are in command mode, and each keypress you make will issue a command to vi. Be careful - you may accidentally modify or delete parts of your file.<br><br>
+
+If you are unsure which mode you are in, press <kbd>Esc</kbd>. If you were in insert mode, you will be returned to command mode. If you were already in command mode, you will be left in command mode (possibly with a 'beep', to indicate that you were already in command mode).</blockquote>
+		<h6>To save the file. The command for this is <kbd>w</kbd> (note the colon before the 'w'). After the 'w', put a space, and the name you want to store the file as. For example:</h6>
+		<pre class="prettyprint">
+  :w firstfile.txt</pre>
+		<h6>To quit vi and save the contents of the buffer to the file that vi is being used to edit:</h6>
+		<pre class="prettyprint">
+  :wq</pre>
+		<h6>To quit vi and save the contents of the buffer to a new file:</h6>
+		<pre class="prettyprint">
+  :w filename
+  :q</pre>
+		<h6>Quit Without saving changes:</h6>
+		<pre class="prettyprint">
+  :q!</pre>
+		
+		<h6>中文Vi教程</h6>
+		<pre>
+  vi 常用命令行
+
+1.vi 模式
+ 　　a) 一般模式： vi 处理文件时，一进入该文件，就是一般模式了.
+ 　　b) 编辑模式：在一般模式下可以进行删除，复制，粘贴等操作，却无法进行编辑操作。等按下‘i,I,o,O,a,A,r,R’等
+          字母之后才能进入编辑模式.通常在linux中，按下上述字母时，左下方会出现'INSERT'或者‘REPLACE’字样,才可以
+          输入任何文字到文件中.要回到一般模式，按下[ESC]键即可.
+ 　　c) 命令行模式：在一般模式中，输入“: 或者/或者?”,即可将光标移动到最下面一行，在该模式下，您可以搜索数据，而且读取，
+   　　 存盘，大量删除字符，离开vi，显示行号等操作.
+2.vi 常用命令汇总:
+ 2.1 一般模式
+  　　a) 移动光标： 
+    　　--> 上下左右方向键 ↑↓← →
+    　　--> 翻页 pagedown / pageup 按键
+    　　--> 数字 0 : 将光标移动到当前行首
+   　　 --> $ :　　　将光标移动到当前行尾
+   　　 --> G :       移动到这个文件的最后一行  nG :  n 为数字，移动到这个文件的第n行.
+    　　--> gg:      移动到这个文件的第一行 相当于 1G
+    
+  　　b)  搜索与替换
+    　　--> /word :  从光标开始，向下查询一个名为word的字符串。
+    　　--> :n1、n2s/word1/word2/g : n1 与n2 为数字.在第n1与n2行之间寻找word1这个字符串,
+            　　并将该字符串替换为word2。
+   　　 --> :1、$s/word1/word2/g : 从第一行到最后一行寻找word1字符串，并将该字符串替换为word2
+    　　--> :1、$s/word1/word2/gc: 从第一行到最后一行寻找word1字符串，并将该字符串替换为word2。
+          　　并且在替换之前显示提示符给用户确认（conform）是否需要替换。
+ 　　 c) 删除，复制，粘贴
+   　　 --> x,X  : 在一行中，x为向后删除一个字符（相当于del键），X为向前删除一个字符（相当于backspace键）。
+    　　--> dd   : 删除光标所在的那一整行。
+    　　--> ndd  : n 为数字。从光标开始，删除向下n列。
+   　　 --> yy   : 复制光标所在的那一行。   
+   　　 --> nyy  : n为数字。复制光标所在的向下n行。
+   　　 --> p,P  : p 为将已复制的数据粘贴到光标的下一行，P则为贴在光标的上一行。
+    　　--> u    : 复原前一个操作
+   　　 --> CTRL + r : 重做上一个操作。
+    　　--> 小数点'.': 重复前一个动作。
+ 2.2  编辑模式：
+  　　a) i, I : 在光标所在处插入输入文字，已存在的文字向后退。i 为‘从当前光标所在处插入’，I 为‘在当前所在行的一个非空格符处开始插入’。
+ 　　 b) a, A : a 为‘从当前光标所在处的下一个字符开始插入’。A 为‘从光标所在行的最后一个字符处开始插入’。
+  　　c) o,O  : 这是英文o的大小写。o为‘在当前光标所在行的下一行处插入新的一行’。O表示‘在当前光标所在行的上一行插入新的一行’。
+  　　d) r,R  : 替换：r 会替换光标所在的那一个字符。 R ： 会一直替换光标所在的字符，直到按下esc 键为止。
+  　　e) ESC  : 进入一般模式。
+ 2.3 命令模式：
+  　　a) :w   : 将编辑的数据写入硬盘
+ 　　 b) :q   : 离开vi
+ 　　 c) :q!  : 强制离开，不存储
+  　　d) :wq  : 存储后离开
+  　　e) :wq! : 强制存储后离开
+
+3. vim 附加命令行
+ 3.1 块选择（visual block)
+  　　v  字符选择，将光标经过的地方反白显示
+  　　V  行选择，会将光标经过的行反白选择
+  　　ctrl + v 块选择，可以用长方形的方式选择数据
+  　　y  复制反白的地方
+   　 d  将反白的地方删除掉
+ 3.2 多文件编辑
+ 　 :n  编辑下一个文件
+     :N  编辑上一个文件
+　  :files  列出当前vim 打开的所有文件
+ 3.3 多窗口功能
+     :sp 【filename】打开一个新窗口，如果加filename，表示在新窗口打开一个新文件
+    　　 否则表示两个窗口为同一个文件内容
+     ctrl+wj  先按下ctrl ，再按下w后，放开所有按键，然后按下j，则光标可移动到下方的窗口
+     ctrl+wk  同上，不过光标移动到上面的窗口
+     ctrl+wq  其实就是:q结束离开。</pre>
+		</div>
+
+		<!--  ------------------------ Windows terminal command ------------------------ -->
+
+		<div class="col-md-12 nav" id="Windows">
+			<div class="page-header"><h4>Windows DOS/terminal command</h4></div>
+
+			<h6>Provide you with a list of currently open ports and related IP addresses. You’ll also be told what state the port is in – listening, established or closed.</h6>
+			<pre class="prettyprint">
+  netstat -an</pre>
+			<h6>Provide a current list of all tasks running on your PC</h6>
+			<pre class="prettyprint">
+  Tasklist</pre>
+		</div>
+
+
+	</div>
+</div>
+
+<div class="footer">
+  <div class="container">
+	<div class="row">
+		<div class="col-md-6 widget">
+			<div class="widget-body">
+				<p class="text-left">
+					<span class="pull-left">© 2014-2015 
+						<a href="http://Github.com">Github</a>
+					</span>
+				</p>
+			</div>
+		</div>
+		<div class="col-md-6 widget">
+			<div class="widget-body">
+				<p class="text-right">
+					<span class="pull-right visible-lg">with <i class="fa fa-heart"></i> by <a href="http://Github.com/suxiaogang">SAM</a> in Xi'an</span>
+				</p>
+			</div>
+		</div>
+	</div> <!-- /row of widgets -->
+  </div>
+</div>
+<script type="text/javascript" src="http://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<script>
+$(function() {
+  $('a[href*=#]:not([href=#])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html,body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});
+</script>
+<!--
+-->
+</body>
+</html>
