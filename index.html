@@ -36,6 +36,25 @@ a:focus,a:active{
 	border-radius: 0px;
 	border: none;
 }
+.btn-mini {
+    background-color: #555;
+    color: #f3f3f3;
+    font-size: 11px;
+    padding: 4px 8px 2px 8px;
+    box-shadow: 0 4px 8px 0 rgba(7,17,27,.4);
+}
+.btn-mini:hover{
+    transition: all .6s;
+    background-color: #000;
+    color: #fff;
+    font-size: 11px;
+}
+.btn-mini:active{
+    transition: all .6s;
+    background-color: #000;
+    color: #fcfcfc;
+    font-size: 11px;
+}
 blockquote{
 	padding: 10px 10px;
 	font-size: 11px;
@@ -74,8 +93,10 @@ body {
 .breadcrumb{
 	background-color: #fff;
 	border-radius: 5px;
-	padding20px;
 	margin:0;
+}
+table{
+    font-size: 11px;
 }
 .nav{
 	display:block;
@@ -118,13 +139,24 @@ h6{
 	font-size: 14px;
 	color: #8C8C8C;
 }
-pre{
+pre, .code{
 	background-color: #ECECEC;
 	color:#000;
 	border: none;
 	border-radius: 5px;
 	font-family: Consolas,Courier,Courier New,monospace,serif;
 	font-size: 13px;
+}
+#FontAwesome-Icons i.fa{
+    font-size: 35px;
+}
+.code{
+    resize: none;
+    width: 500px;
+    line-height: 20px;
+    outline: none;
+    padding: 4px 8px;
+    border: 1px solid #eee;
 }
 /***footer***/
 .footer {
@@ -180,7 +212,28 @@ pre{
 			  <li><a href="#macosx"><i class="fa fa-apple" aria-hidden="true"></i> OS X</a></li>
 			  <li class="active"><a href="#Windows"><i class="fa fa-windows" aria-hidden="true"></i> Windows terminal command</a></li>
 			</ol>
-		</div>
+        </div>
+
+        <!--  ------------------------ Windows terminal command ------------------------ -->
+
+		<div class="col-md-12 nav" id="Links">
+            <div class="page-header">
+                <a target="_blank" href="template.html"><h4>Links</h4></a>
+            </div>
+            <a target="_blank" href="http://BootCDN.cn" class="btn btn-mini">BootCDN</a>
+            <a target="_blank" href="http://tool.lu" class="btn btn-mini">iBox在线工具</a>
+        </div>
+
+        <!--  ------------------------ FontAwesome Icons ------------------------ -->
+
+		<div class="col-md-12 nav" id="FontAwesome-Icons">
+                <div class="page-header">
+                    <a target="_blank" href="https://fontawesome.com/v4.7.0/icons/"><h4>Icons</h4></a>
+                </div>
+                <i class="fa fa-github-alt" aria-hidden="true"></i><br>
+                <textarea class="code" readonly rows="1"><i class="fa fa-github-alt" aria-hidden="true"></i></textarea>
+            </div>
+        
 
 		<!--  ------------------------ UNIX/Linux bash ------------------------ -->
 
