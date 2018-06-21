@@ -43,6 +43,20 @@ a:focus,a:active{
     padding: 4px 8px 2px 8px;
     box-shadow: 0 4px 8px 0 rgba(7,17,27,.4);
 }
+.btn-mini2 {
+	background-color: transparent;
+	border: 1px solid #333;
+    color: #000;
+    font-size: 11px;
+    padding: 4px 8px 2px 8px;
+    box-shadow: 0 4px 8px 0 rgba(7,17,17,.4);
+}
+.btn-mini2:hover{
+    transition: all .2s;
+    background-color: #000;
+    color: #fff;
+    font-size: 11px;
+}
 .btn-mini:hover{
     transition: all .6s;
     background-color: #000;
@@ -50,7 +64,7 @@ a:focus,a:active{
     font-size: 11px;
 }
 .btn-mini:active{
-    transition: all .6s;
+    transition: all .3s;
     background-color: #000;
     color: #fcfcfc;
     font-size: 11px;
@@ -150,13 +164,13 @@ pre, .code{
 #FontAwesome-Icons i.fa{
     font-size: 35px;
 }
-.code{
+textarea.code{
+	-webkit-appearance: none;
     resize: none;
-    width: 500px;
-    line-height: 20px;
+    width: 100%;
+    line-height: 25px;
     outline: none;
-    padding: 4px 8px;
-    border: 1px solid #eee;
+    padding: 8px 8px;
 }
 /***footer***/
 .footer {
@@ -186,6 +200,44 @@ pre, .code{
 .fa{
 	color:#5C5C5C;
 }
+.met-online {
+    display: none;
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    z-index: 100;
+    overflow: hidden;
+}
+.met-online ul.blocks {
+    margin: 0;
+    transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    overflow: hidden;
+}
+.met-online ul.blocks li {
+    clear: both;
+    margin-bottom: 5px;
+
+}
+.met-online ul.blocks li button{
+    border: none;
+    background-color: rgba(64, 150, 238, 0.95);
+    padding: 0;
+    width: 35px;
+    height: 35px;
+}
+.met-online ul.blocks li button i{
+    color: #fff;
+}
+.met-online ul.blocks li button:hover{
+    transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    background-color: rgba(64, 150, 238, 0.75);
+}
 </style>
 </head>
 <body>
@@ -207,32 +259,69 @@ pre, .code{
 		<div class="col-md-12 breadcrumb">
 			<ol class="breadcrumb">
 			  <li><a href="#Bash"><i class="fa fa-terminal" aria-hidden="true"></i> Bash</a></li>
-			  <li><a href="#Git"><i class="fa fa-github-alt" aria-hidden="true"></i> Git/GitHub</a></li>
-			  <li><a href="#Vi"><i class="fa fa-connectdevelop" aria-hidden="true"></i> Vi/Vim</a></li>
+			  <li><a href="#Git"><i class="fa fa-github-alt" aria-hidden="true"></i> Git / GitHub</a></li>
+			  <li><a href="#Vi"><i class="fa fa-linux" aria-hidden="true"></i> Vi / Vim</a></li>
 			  <li><a href="#macosx"><i class="fa fa-apple" aria-hidden="true"></i> OS X</a></li>
 			  <li class="active"><a href="#Windows"><i class="fa fa-windows" aria-hidden="true"></i> Windows terminal command</a></li>
 			</ol>
         </div>
 
-        <!--  ------------------------ Windows terminal command ------------------------ -->
+        <!--  ------------------------ Links ------------------------ -->
 
 		<div class="col-md-12 nav" id="Links">
             <div class="page-header">
                 <a target="_blank" href="template.html"><h4>Links</h4></a>
             </div>
-            <a target="_blank" href="http://BootCDN.cn" class="btn btn-mini">BootCDN</a>
-            <a target="_blank" href="http://tool.lu" class="btn btn-mini">iBox在线工具</a>
-        </div>
+            <a target="_blank" class="btn btn-mini2" href="https://resources.jetbrains.com/storage/products/intellij-idea/docs/IntelliJIDEA_ReferenceCard.pdf">IntelliJ IDEA KEYMAP</a>
+			<a target="_blank" class="btn btn-mini2" href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf">Keyboard shortcuts for macOS - Visual Studio Code</a>
+			<a target="_blank" class="btn btn-mini2" href="https://kapeli.com/cheat_sheets/iTerm2.docset/Contents/Resources/Documents/index">iTerm2 cheetsheet</a>
+		</div>
+		
+		<!--  ------------------------ Keymap & Shortcuts ------------------------ -->
+
+		<div class="col-md-12 nav" id="Keymap">
+			<div class="page-header">
+					<h4>Links</h4>
+			</div>
+			<a target="_blank" class="btn btn-mini" href="http://BootCDN.cn">BootCDN</a>
+			<a target="_blank" class="btn btn-mini" href="http://tool.lu">iBox在线工具</a>
+		</div>
 
         <!--  ------------------------ FontAwesome Icons ------------------------ -->
 
 		<div class="col-md-12 nav" id="FontAwesome-Icons">
-                <div class="page-header">
-                    <a target="_blank" href="https://fontawesome.com/v4.7.0/icons/"><h4>Icons</h4></a>
-                </div>
-                <i class="fa fa-github-alt" aria-hidden="true"></i><br>
-                <textarea class="code" readonly rows="1"><i class="fa fa-github-alt" aria-hidden="true"></i></textarea>
-            </div>
+			<div class="page-header">
+				<a target="_blank" href="https://fontawesome.com/v4.7.0/icons/">
+					<h4>Icons</h4>
+				</a>
+			</div>
+			<div class="table-responsive">
+				<table class="table table-bordered">
+					<tbody>
+						<tr>
+							<td><i class="fa fa-github-alt" aria-hidden="true"></i></td>
+							<td><textarea class="textarea code" readonly rows="1"><i class="fa fa-github-alt" aria-hidden="true"></i></textarea></td>
+						</tr>
+						<tr>
+							<td><i class="fa fa-weixin" aria-hidden="true"></i></td>
+							<td><textarea class="textarea code" readonly rows="1"><i class="fa fa-weixin" aria-hidden="true"></i></textarea></td>
+						</tr>
+						<tr>
+							<td><i class="fa fa-commenting-o" aria-hidden="true"></i></td>
+							<td><textarea class="textarea code" readonly rows="1"><i class="fa fa-commenting-o" aria-hidden="true"></i></textarea></td>
+						</tr>
+						<tr>
+							<td><i class="fa fa-envelope" aria-hidden="true"></i></td>
+							<td><textarea class="textarea code" readonly rows="1"><i class="fa fa-envelope" aria-hidden="true"></i></textarea></td>
+						</tr>
+						<tr>
+							<td><i class="fa fa-file-archive-o" aria-hidden="true"></i></td>
+							<td><textarea class="textarea code" readonly rows="1"><i class="fa fa-file-archive-o" aria-hidden="true"></i></textarea></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
         
 
 		<!--  ------------------------ UNIX/Linux bash ------------------------ -->
@@ -782,14 +871,34 @@ public class IotApplication {
 	</div> <!-- /row of widgets -->
   </div>
 </div>
-<!-- jQuery -->
+
+<div class="met-online">
+	<ul class="blocks list-unstyled">
+		<li class="go_to_top"><button type="button" class="btn btn-icon btn-info">
+			<i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+		</li>
+	</ul>
+</div>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<!-- Bootstrap Core JavaScript -->
 <script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="http://cdn.bootcss.com/wow/1.1.2/wow.js"></script>
 <script>
 $(document).ready(function() {
+	$(".go_to_top").click(function() {
+        $("html,body").animate({
+            'scrollTop': '0px'
+        }, 300)
+    });
+    $(window).scroll(function() {
+        var top = $(document).scrollTop();
+        var g = $(".met-online");
+        if (top > 100 && g.is(":hidden")) {
+            g.fadeIn();
+        } else if(top < 100 && g.is(":visible")) {
+            g.fadeOut();
+        }
+	});
+	
     $(document).on('click', 'a[href^="#"]', function (event) {
         event.preventDefault();
 
@@ -803,7 +912,5 @@ $(document).ready(function() {
     });
 });
 </script>
-<!--
--->
 </body>
 </html>
