@@ -173,29 +173,13 @@ textarea.code{
     padding: 8px 8px;
 }
 /***footer***/
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 50px;
-  font-size:12px;
-  background-color: #2C3E50;
-}
-.footer p{
-  margin-top:20px;
-  color:#C5C5C5;
-}
-.footer p a{
-  color:#C5C5C5;
-  margin-left:3px;
-  margin-right:3px;
-}
-.footer p a:hover{
-  color:#888;
-}
-.footer .fa-heart{
-  color:red;
+footer {
+    padding: 30px 0;
+    line-height: 25px;
+	background-color: #1f2d3d;
+	position: absolute;
+  	bottom: 0;
+  	width: 100%;
 }
 .fa{
 	color:#5C5C5C;
@@ -825,52 +809,16 @@ If you are unsure which mode you are in, press <kbd>Esc</kbd>. If you were in in
   Tasklist</pre>
         </div>
         
-        <div class="col-md-12 nav" id="Java">
-			<div class="page-header"><h4>Java</h4></div>
-			<pre class="prettyprint">
-package com.github;
-
-import com.github.commons.constant.MVCConstant;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
-
-@SpringBootApplication
-@ComponentScan(basePackages = {MVCConstant.COMPONENT_BASE_PACKAGES})
-public class IotApplication {
-  public static void main(String[] args) {
-      SpringApplication.run(IotApplication.class, args);
-  }
-}
-</pre>
+        <div class="col-md-12 nav" id="showHtml">
+			<div class="page-header"><h4>HTML Template<li></h4></div>
+			<pre class="prettyprint" id="myHtml"><i class="fa fa-spinner fa-spin"></i></li></pre>
 		</div>
 
 
 	</div>
 </div>
 
-<div class="footer">
-  <div class="container">
-	<div class="row">
-		<div class="col-md-6 widget">
-			<div class="widget-body">
-				<p class="text-left">
-					<span class="pull-left">© 2014-2018
-						<a href="http://Github.com">Github & Suxiaogang</a>
-					</span>
-				</p>
-			</div>
-		</div>
-		<div class="col-md-6 widget">
-			<div class="widget-body">
-				<p class="text-right">
-					<span class="pull-right visible-lg">with <i class="fa fa-heart"></i> by <a href="http://Github.com/suxiaogang">SAM</a> in Xi'an</span>
-				</p>
-			</div>
-		</div>
-	</div> <!-- /row of widgets -->
-  </div>
-</div>
+<div class="text-center"><a id="UserAgent">UserAgent</a></div>
 
 <div class="met-online">
 	<ul class="blocks list-unstyled">
@@ -898,6 +846,8 @@ $(document).ready(function() {
             g.fadeOut();
         }
 	});
+
+	$("#UserAgent").html(navigator.userAgent);
 	
     $(document).on('click', 'a[href^="#"]', function (event) {
         event.preventDefault();
@@ -909,7 +859,19 @@ $(document).ready(function() {
 
     $('pre').each(function(i, block) {
         hljs.highlightBlock(block);
+	});
+
+	$('#showHtml').on('click', function() {
+        $.ajax({
+			url: "template.html",
+			cache: false,
+			success: function(html){
+				$("#myHtml").html("<xmp>"+html+"</xmp>");
+			}
+		});
     });
+	
+	
 });
 </script>
 </body>
